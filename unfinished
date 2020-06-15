@@ -53,9 +53,6 @@
 #stbut.pack()
 #box.mainloop()
 
-#sudo apt-get install build-essential python-dev libmysqlclient-dev
-#sudo apt-get install python-mysqldb
-
 from tkinter import *
 from tkinter.ttk import Combobox
 import sqlite3
