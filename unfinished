@@ -24,6 +24,7 @@
 #con.cursor()
 
 #def emp():
+conn = sqlite3.connect('myempb.db')
     #c.execute("CREATE TABLE EMPLOYEES (Serial_No int, Employee_ID int, Name Text, Experience int)")
     #c.execute("INSERT into EMPLOYEES values (1,1230,'emanuel',98)")
     #c.execute("INSERT into EMPLOYEES values (2,1231,'laura',98)")
@@ -39,7 +40,7 @@
 #print(c.fetchall())
 
 #con.close()
-
+#con.commit()
 #from tkinter import *
 #box = Tk()
 #fr1 = Frame(box)
