@@ -1,3 +1,4 @@
+#from tkinter import *
 #import sqlite3
 
 
@@ -15,11 +16,12 @@
     #c.execute("INSERT into STUDENTS values (8,8767,'Nancy',78)")
     #c.execute("INSERT into STUDENTS values (9,8768,'SVM',35)")
     #c.execute("INSERT into STUDENTS values (10,8770,'sophia',28)")
+    c.execute("SELECT DISTINCT * FROM STUDENTS")
 #print(c.fetchall())
-#con.commit()
-
 #con.close()
-#c = con.cursor()
+#con.commit() 
+
+#con.cursor()
 
 #def emp():
     #c.execute("CREATE TABLE EMPLOYEES (Serial_No int, Employee_ID int, Name Text, Experience int)")
