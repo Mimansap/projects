@@ -1,0 +1,184 @@
+#machine learning
+
+#A computer program is said to lear from experience E with respect to some task T 
+#and some performance measure P, if its performance on T, as measured by P, 
+#improves with experience E.
+
+#data science
+
+1#data engineering
+#sourcing, piping, data processing
+
+2#data mining
+#answer business questions
+#file is structured 
+#looking for pattern in data
+#etracting knowledge for data
+
+3#machine learning
+#help learn from data
+#predictive analytics
+#i know what is happening and why it is happening, i want to predict what will happend
+
+4#artificial intelligence
+#putting cognitive ability into machines
+
+
+#simulation service
+
+import pandas as pd
+import numpy as np
+dataset = pd.read_csv('Data.csv')
+#pandas is using .read_csv method to import the data of data.csv and save it in dataset
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+dataset = pd.read_csv('Data.csv')
+dataset
+dataset.describe()
+dataset
+X = dataset.iloc[:,:-1].values
+X
+y = dataset.iloc[:,-1].values
+y
+from sklearn.impute import SimpleImputer
+#we are basically saying that if there is anywhere nan replace it using mean and thats strategy
+imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
+imputer.fit(X[:,1:3])#for the first and the second column please compute the missing values using mean strategy
+X[:,1:3] = imputer.transform(X[:,1:3])#this is responsible for changing that value
+X
+from sklearn.preprocessing import OneHotEncoder
+#taking care of missing data
+#removing missing values
+#imputation using mean/median values
+#imputation using most frequent/zero values
+#imputation using prediction(using country nd age to determine salary)
+#Do nothing
+#pd.drop(how to work with it)
+#here we have dependent and independent data and use them for data prediction 
+#the data that we need to predict is purchased and the data that helps us to do that is
+#handling missing data
+dataset.shape
+x = dataset.iloc[:,:-2]
+x
+y = dataset.iloc[2:4]#from row 2 to before row 4 (row 3)
+y
+z = dataset.iloc[:,0:3]#for column based printing:,from column 0 to column before 3(column 2)
+z
+b = dataset.iloc[:,-1] #to print a single column
+b
+c = dataset.iloc[:-1]#from start to before -6(row wise printing)
+c
+#use .values to print it in form of an array
+d = dataset.iloc[:,-2].values#will print the last second array
+d
+X = dataset.iloc[:,:-1].values
+X
+from sklearn.impute import SimpleImputer
+#we are basically saying that if there is anywhere nan replace it using mean and thats strategy
+imputer = SimpleImputer(missing_values=np.nan, strategy='mean')
+imputer.fit(X[:,1:3])#for the first and the second column please compute the missing values using mean strategy
+X
+X[:,1:3] = imputer.transform(X[:,1:3])
+#from sklearn.impute import SimpleImputer
+#imp_mean = SimpleImputer( strategy='most_frequent')
+#imp_mean.fit(train)
+#imputed_train_df = imp_mean.transform(train)
+#when there is no co relation between the values given such as country names 
+#in our given dataset so it is nominal variable 
+#but in the case where order does matter its categorical 
+#to deal with categorical data we use encoding techniques
+#such as, one hot encoding
+#in one hot encoding we will take a column of categorical data and split it multiple columns in forms of 0 and 1 
+#we use column transformer to perform encoding transformations in specific places
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.compose import ColumnTransformer
+ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [0])], remainder='passthrough')
+X=np.array(ct.fit_transform(X))
+X
+#Label encoding
+#Label Encoding refers to converting the labels into numeric form so as to convert it into the machine-readable form
+from sklearn.preprocessing import LabelEncoder#importing
+ls = LabelEncoder()#calling it
+y = ls.fit_transform(y)#performing specific transformations
+print(y)
+y = dataset.iloc[:,-1].values
+#label encoding and ordinal encoding
+#we need to split data using training and test data by using train_test_split
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2,random_state=1)
+print(X_train)
+print(X_test)
+print(y_train)
+print(y_test)
+#look into data stratification 
+#compare other libraries like openpyxl and pandas 
+#look into supervised and unsupervised
+#exaple for finding the mean 
+from sklearn.datasets import fetch_california_housing
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import mean_squared_error
+from math import sqrt
+import random
+import numpy as np
+random.seed(0)
+
+#Fetching the dataset
+import pandas as pd
+dataset = fetch_california_housing()
+train, target = pd.DataFrame(dataset.data), pd.DataFrame(dataset.target)
+train.columns = ['0','1','2','3','4','5','6','7']
+train.insert(loc=len(train.columns), column='target', value=target)
+
+#Randomly replace 40% of the first column with NaN values
+column = train['0']
+print(column.size)
+missing_pct = int(column.size * 0.4)
+i = [random.choice(range(column.shape[0])) for _ in range(missing_pct)]
+column[i] = np.NaN
+print(column.shape[0])
+
+#Impute the values using scikit-learn SimpleImpute Class
+from sklearn.impute import SimpleImputer
+imp_mean = SimpleImputer( strategy='mean') #for median imputation replace 'mean' with 'median'
+imp_mean.fit(train)
+imputed_train_df = imp_mean.transform(train)
+#for most frequent values
+from sklearn.impute import SimpleImputer
+imp_mean = SimpleImputer( strategy='most_frequent')
+imp_mean.fit(train)
+imputed_train_df = imp_mean.transform(train)
+#Imputation Using k-NN:
+#The k nearest neighbours is an algorithm that is used for simple classification. The algorithm uses ‘feature similarity’ to predict the 
+#values of any new data points. This means that the new point is assigned a value based on how closely it resembles the points 
+#in the training set. This can be very useful in making predictions about the missing values by finding the k’s closest neighbours 
+#to the observation with missing data and then imputing them based on the non-missing values in the neighbourhood.
+import sys
+from impyute.imputation.cs import fast_knn
+sys.setrecursionlimit(100000) #Increase the recursion limit of the OS
+
+# start the KNN training
+imputed_training=fast_knn(train.values, k=30)
+#using pd.drop
+#it is used to drop one or more columns in a pandas dataframe
+df.drop(['A'], axis = 1)
+#this will delete the column named A in axis one
+#to drop multiple columns at once we can,
+df.drop(['C', 'D'], axis = 1) 
+#to drop columns on the basis of index use
+df.drop(df.columns[[0, 4, 2]], axis = 1, inplace = True) 
+#to do it using the iloc method,
+# Remove all columns between column index 1 to 3 
+df.drop(df.iloc[:, 1:3], inplace = True, axis = 1) 
+#imputing using most frequent or constant values
+imp = SimpleImputer(strategy="most_frequent")
+print(imp.fit_transform(X))
+#To get the number of rows and columns use,
+dataset.shape
+#or you can use length meathod 
+#this will give you the total number of rows 
+len(dataset.index)
+#for columns
+len(dataset.columns)
