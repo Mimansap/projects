@@ -163,6 +163,8 @@ sys.setrecursionlimit(100000) #Increase the recursion limit of the OS
 imputed_training=fast_knn(train.values, k=30)
 #using pd.drop
 #it is used to drop one or more columns in a pandas dataframe
+#Here we use axis = 1 for column dropping and axis = 0 for row dropping
+#inplace = true is used because thats how pandas library works its optional to use it because we only do it when we pass another function inside the df.drop.
 df.drop(['A'], axis = 1)
 #this will delete the column named A in axis one
 #to drop multiple columns at once we can,
@@ -182,3 +184,59 @@ dataset.shape
 len(dataset.index)
 #for columns
 len(dataset.columns)
+#look into multiple linear regression
+#backwards compatiblity
+#back propagation
+#data stratification
+
+#so, basically if we have a large sample and it isnt properply 
+#representing all the smaller groups within itself, we use data stratification
+#to take that larger inadequate data and we seperate it into 
+#smaller more defined strata
+#when we take a larger group and divide it into smaller sub groups, 
+#the smaller groups are called strata
+
+#Stratified K-Folds cross-validator
+
+#Provides train/test indices to split data in train/test sets.
+
+#exaple if we have a sample population and we are categorising it into just smokers 
+#and non-smokers but what if smokers were older?
+#or were mostly men or female we would need more stratas to 
+#define that and i think thats why we need data stratification
+
+#seanborn and matplotlib are libraries that are basically used 
+#for performing statistical operations?
+#link for the codes 
+https://drive.google.com/file/d/1Ba_xbi_RoQvGXoRszOaRKaf4Qtk8Cazp/view?usp=sharing, https://drive.google.com/file/d/1TAAs-jvn_4m-82iFAygr1tThufT4cTZi/view?usp=sharing, https://drive.google.com/file/d/1usSfOI7BjK6Soe3qDHqoYo7Cnv_4BB9q/view?usp=sharing
+#structured and unstructured data
+#operator overriding and operator overloading
+#structured and unstructured data
+#operator overriding and operator overloading
+#Types of classification 
+#decision tree
+#random forest
+#basically we have one dependent variable and one independent variable and we try 
+#to predict variables on the basis of that
+#basically take some data and slice it in a way that we can divide the data 
+#in a way that we create least slices
+#how to translate the split graph ointo a functional decision tree?
+#take the data and transform it into a tree data structure
+#convert it in forms of parent and child nodes
+#description
+#scq
+#user problems
+#user stories
+#cost 
+#use
+#budget 
+#usability
+#stability
+#market
+#references
+#for the place where the split value is very little, it takes a probablist value
+#by counting/finding out the number of yes and nos
+#to look into the decision tree data
+https://github.com/prodevans/LEAP2.0.git
+https://github.com/prodevans/LEAP2.0/tree/machine-learning
+#to predict how accurate your model is we do it by using confusion matrix
