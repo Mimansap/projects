@@ -1,0 +1,28 @@
+import sys
+from PyQt5.QtWidgets import (QApplication, QWidget, QToolTip, QPushButton )
+from PyQt5.QtGui import QIcon, QFont
+from PyQt5 import Qt
+
+class PyQt5(QWidget):
+
+    def main():
+
+        app = QApplication(sys.argv)
+        w = QWidget()
+        w.setWindowTitle('COVID-SAFE')
+        w.setGeometry(500, 500, 300, 300)
+        QToolTip.setFont(QFont('SansSerif', 10))
+        w.setToolTip('Click here to proceed')
+        btn1 = QPushButton('Proceed',w)
+        btn1.setToolTip('Click here to proceed')
+        btn1.move(100,150)
+        w.setToolTip('Click here to exit')
+        Qbut = QPushButton('Quit',w)
+        Qbut.clicked.connect(QApplication.instance().quit)
+        Qbut.move(110, 180)
+        w.show()
+
+        sys.exit(app.exec_())
+
+    if __name__ == '__main__':
+            main()
