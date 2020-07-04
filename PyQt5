@@ -91,7 +91,7 @@ def main():
 
 main()
 
-#TEST FILE
+#TEST FILE USING CLASS
 
 import sys
 from PyQt5 import QtWidgets
